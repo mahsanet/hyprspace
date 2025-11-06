@@ -9,9 +9,9 @@ import (
 	"github.com/DataDrake/cli-ng/v2/cmd"
 )
 
-var appVersion string = "develop"
+var appVersion = "develop"
 
-//GlobalFlags contains the flags for commands.
+// GlobalFlags contains the flags for commands.
 type GlobalFlags struct {
 	Config string `short:"c" long:"config" desc:"Specify a custom config path."`
 }

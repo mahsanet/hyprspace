@@ -35,7 +35,7 @@ type UpdateFlags struct {
 }
 
 // UpdateRun handles the checking and self updating of the AIT program.
-func UpdateRun(r *cmd.Root, c *cmd.Sub) {
+func UpdateRun(_ *cmd.Root, c *cmd.Sub) {
 	fmt.Printf("Current Version: %s\n", appVersion)
 
 	flags := c.Flags.(*UpdateFlags)

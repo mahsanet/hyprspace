@@ -20,9 +20,9 @@ import (
 	"github.com/hyprspace/hyprspace/config"
 	"github.com/hyprspace/hyprspace/p2p"
 	"github.com/hyprspace/hyprspace/tun"
-	"github.com/libp2p/go-libp2p-core/host"
-	"github.com/libp2p/go-libp2p-core/network"
-	"github.com/libp2p/go-libp2p-core/peer"
+	"github.com/libp2p/go-libp2p/core/host"
+	"github.com/libp2p/go-libp2p/core/network"
+	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/nxadm/tail"
 )
 
@@ -328,7 +328,7 @@ func createDaemon(cfg *config.Config) error {
 
 func streamHandler(stream network.Stream) {
 	// If the remote node ID isn't in the list of known nodes don't respond.
-	if _, ok := RevLookup[stream.Conn().RemotePeer().Pretty()]; !ok {
+	if _, ok := RevLookup[stream.Conn().RemotePeer().String()]; !ok {
 		stream.Reset()
 		return
 	}

@@ -9,7 +9,7 @@ import (
 	"github.com/DataDrake/cli-ng/v2/cmd"
 	"github.com/hyprspace/hyprspace/config"
 	"github.com/libp2p/go-libp2p"
-	"github.com/libp2p/go-libp2p-core/crypto"
+	"github.com/libp2p/go-libp2p/core/crypto"
 	"gopkg.in/yaml.v2"
 )
 
@@ -47,17 +47,17 @@ func InitRun(r *cmd.Root, c *cmd.Sub) {
 	checkErr(err)
 
 	// Setup an initial default command.
-	new := config.Config{
+	newCfg := config.Config{
 		Interface: config.Interface{
 			Name:       args.InterfaceName,
 			ListenPort: 8001,
 			Address:    "10.1.1.1/24",
-			ID:         host.ID().Pretty(),
+			ID:         host.ID().String(),
 			PrivateKey: string(keyBytes),
 		},
 	}
 
-	out, err := yaml.Marshal(&new)
+	out, err := yaml.Marshal(&newCfg)
 	checkErr(err)
 
 	err = os.MkdirAll(filepath.Dir(configPath), os.ModePerm)
